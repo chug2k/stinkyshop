@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/RelativeLayout1"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content" >
+
+<!--     <ImageButton
+        android:id="@+id/item1"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="2dp"
+        android:background="@null"
+        android:onClick="onClickNextButton"
+        android:scaleType="centerInside"
+        android:src="@drawable/ic_action_refresh" /> -->
+
+    <ImageButton
+        android:id="@+id/item2"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:scaleType="centerInside"
+        android:onClick="onClickVoteButton"
+        android:background="@null"
+        android:src="@drawable/ic_launcher" />
+    
+    
+    <me.grantland.widget.AutofitTextView
+        android:id="@+id/topic_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true"
+        android:layout_toLeftOf="@id/item2"
+        android:gravity="center"
+        android:padding="5dp"
+        android:text="Stinky Shop"
+        android:textAppearance="?android:attr/textAppearanceLarge" 
+        android:textStyle="bold" />
+
+
+</RelativeLayout>

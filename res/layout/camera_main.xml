@@ -1,0 +1,63 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:id="@+id/camera_container"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:background="@android:color/black"
+	tools:context=".MainActivity"
+	tools:ignore="MergeRootFrame">
+
+<!--     <TextView
+        android:id="@+id/topic_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|center_horizontal"
+        android:layout_marginTop="10dp"
+        android:background="@null"
+        android:padding="5dp"
+        android:text="loading topic...hold on!" />
+ -->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_gravity="bottom|center_horizontal"        
+        android:layout_height="wrap_content" >
+
+				<Button
+				    android:id="@+id/take_button"
+				    android:layout_width="wrap_content"
+				    android:layout_height="wrap_content"
+				    android:layout_gravity="bottom|center_horizontal"
+				    android:onClick="onClickTakeButton"
+				    android:text="Take"
+				    android:textColor="@android:color/white" />
+
+				<ImageButton
+				    android:id="@+id/flip_button"
+				    android:layout_width="wrap_content"
+				    android:layout_height="wrap_content"
+				    android:layout_gravity="bottom|center_horizontal"
+				    android:onClick="onClickFlipButton"
+				    android:src="@drawable/camera_flip"
+				    android:text="Flip" />
+
+				<Button
+				    android:id="@+id/upload_button"
+				    android:layout_width="wrap_content"
+				    android:layout_height="wrap_content"
+				    android:onClick="onClickUploadButton"
+				    android:text="Upload"
+				    android:textColor="@android:color/white"
+				    android:visibility="gone" />
+				    
+				<Button
+				    android:id="@+id/cancel_button"
+				    android:layout_width="wrap_content"
+				    android:layout_height="wrap_content"
+				    android:onClick="onClickCancelButton"
+				    android:text="Retake"
+				    android:textColor="@android:color/white"
+				    android:visibility="gone" />
+
+    </LinearLayout>
+
+</FrameLayout>
