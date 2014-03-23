@@ -5,6 +5,7 @@ public class UserModel {
 	private String fbuid;
 	private String fbtoken; // TODO(Charles): Maybe I don't need this. Just grab from Session.getActiveSession().getAccessToken()
 	private String name;
+	private int unseenCount;
 	
 	public String getFbuid() {
 		return fbuid;
@@ -27,4 +28,10 @@ public class UserModel {
 		this.name = name;
 	}
 	
+	public int getUnseenCount() {
+		return this.unseenCount;
+	}
+	public void setUnseenCount(int unseenCount) {
+		this.unseenCount = unseenCount;
+	}
 }

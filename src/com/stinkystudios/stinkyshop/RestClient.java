@@ -34,6 +34,8 @@ public class RestClient {
       		JSONObject ret = new JSONObject(content);
     			String points = ret.getString("score");
     			String name = ret.getString("name");
+    			int unseenCount = ret.getInt("unseen_count");
+    			user.setUnseenCount(unseenCount);
     			
       		Crouton.showText(activity, "Welcome " + name + 
       				" - score:" + points, Style.INFO);

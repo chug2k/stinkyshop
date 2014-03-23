@@ -1,13 +1,14 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-	xmlns:tools="http://schemas.android.com/tools"
-	android:id="@+id/camera_container"
-	android:layout_width="match_parent"
-	android:layout_height="match_parent"
-	android:background="@android:color/black"
-	tools:context=".MainActivity"
-	tools:ignore="MergeRootFrame">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/camera_container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/black"
+    tools:context=".MainActivity"
+    tools:ignore="MergeRootFrame" >
 
-<!--     <TextView
+    <!--
+         <TextView
         android:id="@+id/topic_textview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -16,48 +17,84 @@
         android:background="@null"
         android:padding="5dp"
         android:text="loading topic...hold on!" />
- -->
+    -->
+
     <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_gravity="bottom|center_horizontal"        
-        android:layout_height="wrap_content" >
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center_horizontal" >
 
-				<Button
-				    android:id="@+id/take_button"
-				    android:layout_width="wrap_content"
-				    android:layout_height="wrap_content"
-				    android:layout_gravity="bottom|center_horizontal"
-				    android:onClick="onClickTakeButton"
-				    android:text="Take"
-				    android:textColor="@android:color/white" />
+        <Button
+            android:id="@+id/take_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center_horizontal"
+            android:onClick="onClickTakeButton"
+            android:text="Take"
+            android:textColor="@android:color/white" />
 
-				<ImageButton
-				    android:id="@+id/flip_button"
-				    android:layout_width="wrap_content"
-				    android:layout_height="wrap_content"
-				    android:layout_gravity="bottom|center_horizontal"
-				    android:onClick="onClickFlipButton"
-				    android:src="@drawable/camera_flip"
-				    android:text="Flip" />
+        <ImageButton
+            android:id="@+id/flip_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center_horizontal"
+            android:onClick="onClickFlipButton"
+            android:src="@drawable/camera_flip"
+            android:text="Flip" />
 
-				<Button
-				    android:id="@+id/upload_button"
-				    android:layout_width="wrap_content"
-				    android:layout_height="wrap_content"
-				    android:onClick="onClickUploadButton"
-				    android:text="Upload"
-				    android:textColor="@android:color/white"
-				    android:visibility="gone" />
-				    
-				<Button
-				    android:id="@+id/cancel_button"
-				    android:layout_width="wrap_content"
-				    android:layout_height="wrap_content"
-				    android:onClick="onClickCancelButton"
-				    android:text="Retake"
-				    android:textColor="@android:color/white"
-				    android:visibility="gone" />
+        <Button
+            android:id="@+id/upload_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onClickUploadButton"
+            android:text="Upload"
+            android:textColor="@android:color/white"
+            android:visibility="gone" />
 
+        <Button
+            android:id="@+id/cancel_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onClickCancelButton"
+            android:text="Retake"
+            android:textColor="@android:color/white"
+            android:visibility="gone" />
     </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/RelativeLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <LinearLayout
+            android:id="@+id/linearLayoutVertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:orientation="vertical" >
+
+            <ImageButton
+                android:id="@+id/voteImageButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="30dp"
+                android:background="@null"
+                android:onClick="onClickVoteButton"
+                android:src="@drawable/check" />
+
+            <ImageButton
+                android:id="@+id/leaderboardButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/voteImageButton"
+                android:layout_marginTop="25dp"
+                android:background="@null"
+                android:onClick="onClickLeaderboardButton"
+                android:src="@drawable/jong_un" />
+        </LinearLayout>
+    </RelativeLayout>
 
 </FrameLayout>

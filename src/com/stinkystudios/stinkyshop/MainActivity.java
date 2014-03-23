@@ -21,6 +21,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.androidzeitgeist.mustache.listener.CameraFragmentListener;
+import com.readystatesoftware.viewbadger.BadgeView;
 import com.stinkystudios.stinkyshop.LoginHelper.LoginDelegate;
 
 import de.keyboardsurfer.android.widget.crouton.Crouton;
@@ -117,9 +118,6 @@ public class MainActivity extends FragmentActivity implements
 		@Override
 		public Fragment getItem(int position) {
 			return mFragments.get(position);
-			// getItem is called to instantiate the fragment for the given page.
-			// Return a DummySectionFragment (defined as a static inner class
-			// below) with the page number as its lone argument.			
 		}
 
 		@Override
@@ -159,6 +157,7 @@ public class MainActivity extends FragmentActivity implements
 				MainActivity.this.getActionBar().show();
 				UserModel user = ((GlobalVars) getApplication()).getUser();
 				RestClient.getNextTopic(MainActivity.this, MainActivity.this, user);
+				MainActivity.this.showUnseenCount();
 			}
 		}
 	}
@@ -197,9 +196,15 @@ public class MainActivity extends FragmentActivity implements
 	public void onClickTakeButton(View v) {
 		mCameraFragment.takePhotoFromPreview();
 	}
+	public void onClickLeaderboardButton(View v) {
+		mViewPager.setCurrentItem(2, true);
+	}
+	public void onClickVoteButton(View v) {
+		mViewPager.setCurrentItem(1, true);
+	}	
 	
 	public void onClickUploadButton(View v) {
-  	RestClient.submitPhoto(this, this, mPhotoBitmap);		
+		RestClient.submitPhoto(this, this, mPhotoBitmap);		
 	}
 	public void onClickCancelButton(View v) {
 		swapButtons(false);
@@ -209,6 +214,16 @@ public class MainActivity extends FragmentActivity implements
 	public void onClickFlipButton(View v) {
 		mCameraFragment.swapCamera();
 	}	
+	
+	private void showUnseenCount() {
+		UserModel user = ((GlobalVars) getApplication()).getUser();
+		if(user.getUnseenCount() > 0) {
+			View target = findViewById(R.id.voteImageButton);
+			BadgeView badge = new BadgeView(this, target);
+			badge.setText(Integer.toString(user.getUnseenCount()));
+			badge.show();			
+		}	
+	}
 	
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -223,6 +238,7 @@ public class MainActivity extends FragmentActivity implements
 	@Override
 	public void handleUserLogIn(UserModel player) {
 		if (player != null) {
+			
 			((GlobalVars) getApplication()).setUser(player);
 			// Register with GCM and all that, but do it silently.
 
@@ -249,11 +265,14 @@ public class MainActivity extends FragmentActivity implements
 		this.addViewPagerPage(StinkyWebViewFragment
 				.newInstance("http://backshop.herokuapp.com/leaderboards?fbuid="
 						+ user.getFbuid()));
+		
+		this.showUnseenCount();
 	}
+
 	@Override
 	public void setTopicLoading() {
 		ActionBar ab = getActionBar();
-    ab.setTitle("Loading topic...");		
+		ab.setTitle("Loading topic...");		
 	}
 	@Override
 	public void showNextTopic(TopicModel nextTopic) {
